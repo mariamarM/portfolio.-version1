@@ -1,0 +1,80 @@
+.footerPro {
+    width: 1778px;
+    height: 104px;
+
+    display: flex;
+    align-items: right;
+    gap: 500px;
+    justify-content: center;
+    position: relative;
+    margin: 50px auto;
+}
+
+.footbar {
+    width: 205vh;
+    height: 2px;
+    background: #DB778F;
+    position: absolute;
+    margin-top: 50px;
+}
+
+.titlefooter {
+    color: #DB778F;
+    font-family: 'Manrope', sans-serif;
+    font-size: 128px;
+
+    font-weight: 100;
+
+}
+
+.cosasProj {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 150px;
+    margin-top: 150px;
+}
+.flecha{
+    position:relative;
+    top: 0px;
+    left: 120px;
+}
+.textProj {
+    color: #DB778F;
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 200;
+    text-decoration: underline;
+    text-decoration-color: white;
+    line-height: normal;
+    text-align: center;
+}
+
+.proj {
+    display: inline-flex;
+    height: auto;
+    padding: 37px 42px 228px 46px;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 206px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    border: 1px solid #DB778F;
+    background: #FFF;
+}
+
+/*PROJECT INDIVIDUAL*/
+.descProj {
+    color: #DB778F;
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-align: center;
+
+}

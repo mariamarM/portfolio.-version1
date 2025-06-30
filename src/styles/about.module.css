@@ -1,0 +1,78 @@
+.contenido {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 800px;
+    height: 100%;
+    margin: 8% 15%;
+    gap: 15%;
+}
+
+.titulonombre {
+    color: #DB778F;
+    font-family: 'Manrope-Semibold', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.separador {
+    width: 2px;
+    height: 20px;
+    background: #DB778F;
+}
+
+.yoliteral {
+    color: #DB778F;
+    font-family: Manrope;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    width: 662px;
+}
+.descripcion{
+    display: flex;
+    gap:30px;
+    flex-direction: column;
+}
+@font-face {
+    font-family: 'Manrope';
+    src: url('/fonts/Manrope/static/Manrope-Light.ttf') format('truetype');
+    src: url('/fonts/Manrope/static/Manrope-Semibold.ttf') format('truetype');
+
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+.footerPro {
+    width: 1278px;
+    height: 104px;
+    display: flex;
+    align-items: right;
+    gap: 500px;
+    justify-content: center;
+    position: relative;
+    margin: -110px auto;
+}
+
+.footbar {
+    width: 205vh;
+    height: 2px;
+    background: #DB778F;
+    position: absolute;
+    margin-top: 50px;
+}
+
+.titlefooter {
+    color: #DB778F;
+    font-family: 'Manrope', sans-serif;
+    font-size: 128px;
+    font-weight: 100;
+
+}
