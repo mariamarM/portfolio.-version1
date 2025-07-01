@@ -5,40 +5,86 @@ import abac from '../multimedia/abacdos.png'
 import badaveci from '../multimedia/avbc.png'
 import flecha from '../multimedia/flechaProjpng.png'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
-import star from '../multimedia/star.png'
 export default function Projects() {
   return (
     <div className={styles.home}>
       <div className={styles.cosasProj}>
-        <div className={styles.proj}>
-          <Link to="/projects/1">
-            <img className={styles.flecha} src={flecha} alt="felcha" /> 
 
-           {/* <img className={styles.mocoimg} src={mocoimg} alt="mocomuseo" /> */}
-          <p className={styles.textProj}>mocoproject</p>
+
+        <motion.div
+          className={styles.projMoco}
+          whileHover={{ scale: 1.03 }}
+        >
+          <Link to="/projects/1" className={styles.linkContainer}>
+            <motion.img
+              src={mocoimg}
+              alt="moco"
+              className={styles.bgImage}
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 0.15 }}
+              transition={{ duration: 0.5 }}
+            />
+            <img className={styles.flecha} src={flecha} alt="flecha" />
+            <p className={styles.textProj}>Moco project</p>
           </Link>
-        </div>
+        </motion.div>
 
-        <div className={styles.proj}>
-          <Link to="/projects/2">
-            <img className={styles.abac} src={abac} alt="abac" />
+
+        <motion.div className={styles.projAbac} whileHover={{ scale: 1.03 }}>
+          <Link to="/projects/2" className={styles.linkContainer}>
+            <motion.img
+              src={abac}
+              alt="abac"
+              className={styles.bgImage}
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            />
+            <img className={styles.flecha} src={flecha} alt="flecha" />
             <p className={styles.textProj}>ÁBaC</p>
           </Link>
-        </div>
+        </motion.div>
 
-        <div className={styles.proj}>
-          <Link to="/projects/3">
-            <img className={styles.deezer} src={deezer} alt="deezer" />
-            <p className={styles.textProj}>Deezer API</p>
-          </Link>   
-        </div>
 
-        <div className={styles.proj}>
-          <Link to="/projects/4">
-            <img className={styles.badaveci} src={badaveci} alt="badaveci" />
-            <p className={styles.textProj}>AVCB</p>
+        <motion.div className={styles.projDeezer} whileHover={{ scale: 1.03 }}>
+          <Link to="/projects/3" className={styles.linkContainer}>
+            <motion.img
+              src={deezer}
+              alt="deezer"
+              className={styles.bgImage}
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 0.15 }}
+              transition={{ duration: 0.5 }}
+            />
+            <img className={styles.flecha} src={flecha} alt="flecha" />
+            <p className={styles.textProj}>Deezer</p>
           </Link>
+        </motion.div>
+
+
+        <motion.div className={styles.projBada} whileHover={{ scale: 1.03 }}>
+          <Link to="/projects/4" className={styles.linkContainer}>
+            <motion.img
+              src={badaveci}
+              alt="badaveci"
+              className={styles.bgImage}
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 0.15 }}
+              transition={{ duration: 0.5 }}
+            />
+            <img className={styles.flecha} src={flecha} alt="flecha" />
+            <p className={styles.textProj}>Associació Veins <br />de Badalona</p>
+          </Link>
+        </motion.div>
+        <div className={styles.descProj}>
+          Aquests són els projectes tant acadèmics com de <br />pràctiques que he estat treballant en ells.
+         <br /> He fet ús de diferents frameworks, però majoritàriament <br /> em sento familiaritzada amb eines de FrontEnd.
+
+        </div>
+        <div className={styles.framworks}>
+
         </div>
       </div>
 
@@ -48,6 +94,5 @@ export default function Projects() {
         <h1 className={styles.titlefooter}>PROJECTS</h1>
       </footer>
     </div>
-  )
+  );
 }
-
