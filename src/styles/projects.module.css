@@ -7,7 +7,7 @@
     gap: 500px;
     justify-content: center;
     position: relative;
-    margin: 50px auto;
+    margin: -70px auto;
 }
 
 .footbar {
@@ -15,7 +15,7 @@
     height: 2px;
     background: #DB778F;
     position: absolute;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .titlefooter {
@@ -28,19 +28,24 @@
 }
 
 .cosasProj {
-    position: relative;
     display: flex;
+    width: 1026px;
     flex-direction: row;
-    align-items: center;
+    padding: 52px 30px;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 25px 38px;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 150px;
-    margin-top: 150px;
+    margin:70px 200px;
 }
-.flecha{
-    position:relative;
-    top: 0px;
-    left: 120px;
+
+.flecha {
+    position: relative;
+    top: 30px;
+    left: 400px;
 }
+
 .textProj {
     color: #DB778F;
     font-family: 'Manrope', sans-serif;
@@ -53,20 +58,53 @@
     text-align: center;
 }
 
-.proj {
-    display: inline-flex;
-    height: auto;
-    padding: 37px 42px 228px 46px;
-    justify-content: flex-end;
+.projMoco {
+    display: flex;
+    height: 98px;
+    width: 200px;
+    padding: 60px 100px;
+    justify-content: flex-start;
     align-items: flex-start;
-    flex-direction: row;
-    gap: 206px;
+    border-radius: 30px;
+    border: 1px solid #DB778F;
+    background: #FFF;
+}
+
+.projMoco .flecha{
+    position:relative;
+    top: -30px;
+    left: 240px;
+}
+.projAbac {
+    width: 464px;
+    height: 200px;
     flex-shrink: 0;
     border-radius: 30px;
     border: 1px solid #DB778F;
     background: #FFF;
 }
 
+.projDeezer {
+    width: 464px;
+    height: 262px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    border: 1px solid #DB778F;
+    background: #FFF;
+}
+
+.projBada {
+    width: 464px;
+    height: 360px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    border: 1px solid #DB778F;
+    background: #FFF;
+}
+.descProj{
+    position:absolute;
+    right: 100px;
+}
 /*PROJECT INDIVIDUAL*/
 .descProj {
     color: #DB778F;
@@ -77,4 +115,32 @@
     line-height: normal;
     text-align: center;
 
+}
+.linkContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  border-radius: 30px;
+  pointer-events: none;
+}
+
+.projMoco, .projAbac, .projDeezer, .projBada {
+  position: relative;
+  overflow: hidden;
+}
+
+.textProj, .flecha {
+  position: relative;
+  z-index: 1;
 }
