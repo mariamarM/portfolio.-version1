@@ -5,13 +5,14 @@ import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 import About from './pages/About'
 import ProjectPage from './pages/ProjectPage'
-
+import MusicPlayer from './components/MusicPlayer'
 function App() {
   
     return (
       <>
         
         <Navbar />
+         <MusicPlayer />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/projects" element={<Projects />} />
