@@ -58,13 +58,23 @@ export default function Projects() {
         />
 
         <div className={styles.descProj}>
-          Aquests són els projectes tant acadèmics com de <br />pràctiques que he estat treballant en ells.
+         Aquests són els projectes tant acadèmics com de <br />pràctiques que he estat treballant en ells.
           <br /> He fet ús de diferents frameworks, però majoritàriament <br /> em sento familiaritzada amb eines de FrontEnd.
-    <div className={styles.framworks}>
-        </div>
-                    <AnimacionTexto />
 
+           
         </div>
+
+        <AnimacionTexto
+          text={` PHP, React, Vue, Angular, JavaScript, HTML, CSS, Bootstrap, TailwindCSS, MaterialUI, Framer Motion, Figma, GitHub.`}
+          // highlightWords={["frameworks", "Bits", "animated", "components", "simplify"]}
+          highlightClass="highlighted"
+          gravity={0.56}
+          fontSize="2rem"
+        />
+        
+     
+   
+
  
 
     

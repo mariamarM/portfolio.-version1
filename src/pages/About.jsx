@@ -21,10 +21,12 @@ export default function About() {
         </div>
       </div>
 
-    </div><footer className={style.footerPro}>
+    </div>
+    <footer className={style.footerPro}>
         <div className={style.footbar}></div>
         <h1 className={style.titlefooter}>01</h1>
         <h1 className={style.titlefooter}>ABOUT ME</h1>
-      </footer></>
+      </footer>
+      </>
   )
 }
