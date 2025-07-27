@@ -21,6 +21,10 @@
   -moz-user-select: none;
   -ms-user-select: none;
   transition: all 0.3s ease-out;
+
+
+    /* transform: translate(420%, 220%); */
+
 }
 
 

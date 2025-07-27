@@ -67,8 +67,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  width: 100%;
-  gap: 32%;
+  width: max-content;
+  gap: 500px;
 
 }
 
