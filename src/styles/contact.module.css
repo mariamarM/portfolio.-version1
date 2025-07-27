@@ -1,36 +1,105 @@
-.contenido{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    width: 800px;
-    height: 100%;
-    margin: 250px 15%;
-    gap: 20%;
+.contenido {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 800px;
+  height: 100%;
+  margin: 250px 15%;
+  gap: 20%;
 }
+
 .footerPro {
-    width: 1278px;
-    height: 104px;
-    display: flex;
-    align-items: right;
-    gap: 500px;
-    justify-content: center;
-    position: relative;
-    margin: -120px auto;
+  width:200vh;
+  height: 204px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap:500px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(15px);;
+  z-index: 10;
+  overflow: hidden;
 }
 
 .footbar {
-    width: 205vh;
-    height: 2px;
-    background: #DB778F;
-    position: absolute;
-    margin-top: 50px;
+  width:300vh;
+  height: 2px;
+  background: #DB778F;
+  position: absolute;
+  bottom: 200px;
+  left: 0;
 }
 
 .titlefooter {
-    color: #DB778F;
+  margin-top:130px;
+  color: #DB778F;
+  font-family: 'Manrope', sans-serif;
+  font-size: 128px;
+  font-weight: 100;
+}
+.folderLink {
+  display: block;
     font-family: 'Manrope', sans-serif;
-    font-size: 128px;
-    font-weight: 100;
+  font-size:16px;
+  color: #DB778F;
+  text-align: center;
+  text-decoration: underline #ffffff solid 1px ;
+}
 
+
+.scrollWrapper {
+  width: 100%;
+  overflow: hidden;
+  padding: 4rem 0;
+  position: relative;
+}
+
+.scroller {
+  display: flex;
+  animation: scroll 20s linear infinite;
+  gap: 5rem;
+  padding-left: 100%;
+}
+
+.folder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  padding: 1rem;
+  border: 2px solid #DB778F;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  text-decoration: underline #ffffff solid 1px ;
+}
+.folder span{
+    text-decoration: underline #ffffff solid 1px ;
+
+}
+.folder:hover {
+  transform: scale(1.1);
+
+}
+
+.folder img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
