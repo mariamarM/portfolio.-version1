@@ -3,7 +3,7 @@ import styles from '../styles/musicplayer.module.css'
 
 const CLIENT_ID = '0772e26b3b60455aa2cf60ba4d42ef7f'
 const CLIENT_SECRET = 'c920e9a49822412a8b3d0b8383bc048a'
-const PLAYLIST_ID = '7FBSUfzhs4QouNXecISMr2'
+const PLAYLIST_ID = '6d4dOq4u7EoLSciIjjcHPp'
 
 const MusicPlayer = () => {
   const [tracks, setTracks] = useState([])
@@ -14,7 +14,15 @@ const MusicPlayer = () => {
   const animationRef = useRef(null) // ✅ CAMBIO: definido aquí correctamente
   const [dragging, setDragging] = useState(false)
   const [offset, setOffset] = useState({ x: 0, y: 0 })
-  const [position, setPosition] = useState({ x: 20, y: 20 })
+const [position, setPosition] = useState({ x: 100, y: 100 })
+
+useEffect(() => {
+  setPosition({
+    x: window.innerWidth * 0.75,
+    y: window.innerHeight * 0.45,
+  })
+}, [])
+
 
   // -------------------- SPOTIFY ----------------------
   const getAccessToken = async () => {
@@ -65,7 +73,10 @@ const MusicPlayer = () => {
       const token = await getAccessToken()
       if (!token) return
       const tracks = await getPlaylistTracks(token)
-      if (tracks) setTracks(tracks)
+if (tracks) {
+  setTracks(tracks) 
+}
+
     }
 
     load()
@@ -90,8 +101,6 @@ const MusicPlayer = () => {
       y: e.clientY - rect.top,
     })
 
-    // ❌ ELIMINADO: useRef dentro de función
-    // const animationRef = useRef(null)
   }
 
   const handleMouseUp = () => {
@@ -163,7 +172,7 @@ const MusicPlayer = () => {
   }, [dragging, offset])
 
   if (error) return <div style={{ color: 'red' }}>❌ Error: {error}</div>
-  if (tracks.length === 0) return <div>🎵 Cargando música...</div>
+  if (tracks.length === 0) return <div className={styles.musicPlayer}>Cargando música...</div>
 
   const track = tracks[currentTrackIndex].track
 
