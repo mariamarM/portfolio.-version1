@@ -73,7 +73,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0 100px; /* Sincronizado con Navbar y Proyectos */
+  padding: 0 100px; 
   box-sizing: border-box;
 }
 
