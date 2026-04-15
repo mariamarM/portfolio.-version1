@@ -1,4 +1,4 @@
-import imagenMaria  from '../multimedia/maria.png';
+import imagenMaria from '../multimedia/maria.png';
 import style from '../styles/about.module.css';
 
 export default function About() {
@@ -22,11 +22,13 @@ export default function About() {
       </div>
 
     </div>
-    <footer className={style.footerPro}>
+      <footer className={style.footerPro}>
         <div className={style.footbar}></div>
-        <h1 className={style.titlefooter}>01</h1>
-        <h1 className={style.titlefooter}>ABOUT ME</h1>
+        <div className={style.contentFooter}>
+          <h1 className={style.titlefooter}>01</h1>
+          <h1 className={style.titlefooter}>ABOUT ME</h1>
+        </div>
       </footer>
-      </>
+    </>
   )
 }

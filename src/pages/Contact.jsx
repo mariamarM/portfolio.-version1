@@ -23,12 +23,12 @@ const links = [
     alt: 'CV',
     href: './public/CV_ANDREO_MARIA_DAW.pdf',
   },
-    {
+  {
     icon: linkedin,
     alt: 'LinkedIn',
     href: 'https://www.linkedin.com/in/maria-andreo-olivella-79768125b/',
   },
-    {
+  {
     icon: behance,
     alt: 'Behance',
     href: 'https://www.behance.net/mariadandreo',
@@ -89,8 +89,10 @@ export default function Contact() {
 
       <footer className={styles.footerPro}>
         <div className={styles.footbar}></div>
-        <h1 className={styles.titlefooter}>02</h1>
-        <h1 className={styles.titlefooter}>CONTACT</h1>
+        <div className={styles.contentFooter}>
+          <h1 className={styles.titlefooter}>02</h1>
+          <h1 className={styles.titlefooter}>CONTACT</h1>
+        </div>
       </footer>
     </div>
   );

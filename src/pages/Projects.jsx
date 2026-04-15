@@ -58,10 +58,10 @@ export default function Projects() {
         />
 
         <div className={styles.descProj}>
-         Aquests són els projectes tant acadèmics com de <br />pràctiques que he estat treballant en ells.
+          Aquests són els projectes tant acadèmics com de <br />pràctiques que he estat treballant en ells.
           <br /> He fet ús de diferents frameworks, però majoritàriament <br /> em sento familiaritzada amb eines de FrontEnd.
 
-           
+
         </div>
 
         <AnimacionTexto
@@ -71,22 +71,25 @@ export default function Projects() {
           gravity={0.56}
           fontSize="2rem"
         />
-        
-     
-   
 
- 
 
-    
-   
+
+
+
+
+
+
 
       </div>
 
       <footer className={styles.footerPro}>
         <div className={styles.footbar}></div>
-        <h1 className={styles.titlefooter}>03</h1>
-        <h1 className={styles.titlefooter}>PROJECTS</h1>
-      </footer>
-    </div>
+        <div className={styles.contentFooter}>
+          <h1 className={styles.titlefooter}>03</h1>
+          <h1 className={styles.titlefooter}>PROJECTS</h1>
+
+        </div>
+      </footer >
+    </div >
   );
 }

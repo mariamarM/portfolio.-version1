@@ -7,15 +7,25 @@
     gap: 500px;
     justify-content: center;
     position: relative;
-    margin: -70px auto;
+    margin: -57px auto;
 }
-
+.contentFooter{
+     display: flex;
+    flex-direction: row;
+    gap: 166%;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: nowrap;
+    position: absolute;
+    right: 300px;
+    height: 50px;
+}
 .footbar {
     width: 205vh;
     height: 2px;
     background: #DB778F;
     position: absolute;
-    margin-top: 30px;
+    margin-top: 82px;
 }
 
 .titlefooter {
