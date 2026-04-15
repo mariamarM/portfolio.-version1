@@ -117,147 +117,87 @@
 
 
 
-/*PROJECT INDIVIDUAL*/
-.descProj {
-    color: #DB778F;
-    font-family: Manrope;
-    font-size: 18px;
-
-    font-weight: 300;
- 
-    text-align: center;
-  position: absolute;
-    right: 4%;
-top: 20%
-   
-}
-
-.linkContainer {
-    position: relative;
+/* --- FINAL PROJECT PAGE LAYOUT --- */
+.finalProjectPage {
     width: 100%;
-    height: 100%;
-    display: block;
-    text-decoration: none;
-}
-
-.bgImage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    border-radius: 30px;
-    pointer-events: none;
-}
-
-.projMoco,
-.projAbac,
-.projDeezer,
-.projBada {
+    min-height: 300vh; /* Para dar espacio al scroll vertical */
+    background-color: transparent;
     position: relative;
-    overflow: hidden;
-}
-
-.textProj,
-.flecha {
-    position: relative;
-    text-decoration: none;
-    z-index: 1;
-}
-
-/*MASCARA DEL CIRCULO DE LAS IMAGENES*/
-.card {
-    position: relative;
-    overflow: hidden;
-    background: white;
-    border-radius: 30px;
-}
-
-.bgReveal {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.linkContainer {
-    position: relative;
-    z-index: 2;
     display: flex;
     flex-direction: column;
+}
+
+.leftInfoSection {
+    position: fixed; /* Texto estático como pidió el usuario */
+    top: 30vh;
+    left: 100px; /* Margen de 100px solicitado */
+    width: 400px;
+    z-index: 10;
+    text-align: left;
+    pointer-events: none; /* Dejar pasar el scroll */
+}
+
+.leftInfoSection h1 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 4rem;
+    color: #DB778F;
+    margin: 0;
+    font-weight: 200;
+}
+
+.leftInfoSection p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.2rem;
+    color: #DB778F;
+    margin-top: 1rem;
+    font-weight: 300;
+}
+
+.parallaxImageColumn {
+    margin-left: 550px; /* Desplazado a la derecha del texto fijo */
+    display: flex;
+    flex-direction: column;
+    gap: 300px;
+    padding: 150px 0 500px 0;
+}
+
+.fixedProjectFooter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    height: 100%;
-    text-decoration: none;
+    justify-content: space-between;
+    padding: 0 100px; /* Margen de 100px sincronizado */
+    background: linear-gradient(to top, rgba(255,255,255,0.1), transparent);
+    backdrop-filter: blur(5px);
+    z-index: 50;
+    border-top: 1px solid rgba(219, 119, 143, 0.2);
 }
 
-.framworks {
-    min-height: 200px;
-    width: auto;
-    padding: 1rem;
-}
-
-/*TEXTO ANIMADO*/
-
-.fallingWord {
-    color: #DB778F;
-    font-family: Manrope;
-    font-size: 25px;
- touch-action: none;
-    cursor: grab;
-    user-select: none;
+.footerBar {
+    width: calc(100% - 200px);
+    height: 1.5px;
+    background: #DB778F;
     position: absolute;
-    text-align: center;
-      will-change: transform;
-
-
-}
-.fullscreenContainer {
-  position: absolute;
-  top: 0;
-
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+    top: 0;
+    left: 100px;
 }
 
-
-.falling-text-container {
-  position: relative;
-  z-index: 1;
-  width: 30%;
-  height: 100%;
-  cursor: pointer;
-  text-align: center;
-  padding-top: 2em;
-}
-
-.falling-text-target {
-  display: inline-block;
-}
-
-.word {
-  display: inline-block;
-  margin: 0 2px;
-  user-select: none;
+.footerTitle {
     color: #DB778F;
-    font-family: Manrope;
-    font-size: 25px;
-}
-:global(.word) {
-  display: inline-block;
-  margin: 0 2px;
-  user-select: none;
-  color: #DB778F;
-  font-family: Manrope;
-  font-size: 25px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 5rem;
+    font-weight: 100;
+    margin: 0;
 }
 
-
-
-
+.imgParallax {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}

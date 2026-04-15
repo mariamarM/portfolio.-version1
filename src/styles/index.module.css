@@ -8,21 +8,24 @@
 
 .subtitle {
   color: #d27c92;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-family: 'Manrope', sans-serif;
   font-weight: 100;
   text-align: center;
 }
 
 .home {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  width: 100%;
-  position: relative;
   overflow: hidden;
+  background-color: transparent;
 }
 
 
@@ -69,8 +72,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 97%;
+  width: 100%;
   padding: 0 50px;
+  box-sizing: border-box;
 }
 
 .header {
