@@ -12,7 +12,7 @@
 .contentFooter{
      display: flex;
     flex-direction: row;
-    gap: 166%;
+    gap: 100%;
     justify-content: flex-start;
     align-content: flex-start;
     flex-wrap: nowrap;
