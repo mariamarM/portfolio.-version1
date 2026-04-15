@@ -1,147 +1,56 @@
 import { useEffect, useState, useRef } from 'react'
 import styles from '../styles/musicplayer.module.css'
 
-const CLIENT_ID = '0772e26b3b60455aa2cf60ba4d42ef7f'
-const CLIENT_SECRET = 'c920e9a49822412a8b3d0b8383bc048a'
-const PLAYLIST_ID = '6d4dOq4u7EoLSciIjjcHPp'
+const PLAYLIST_ID = import.meta.env.VITE_SPOTIFY_PLAYLIST_ID || '6d4dOq4u7EoLSciIjjcHPp'
 
 const MusicPlayer = () => {
-  const [tracks, setTracks] = useState([])
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
-  const [error, setError] = useState(null)
-
   const playerRef = useRef(null)
-  const animationRef = useRef(null) // ✅ CAMBIO: definido aquí correctamente
+  const animationRef = useRef(null)
   const [dragging, setDragging] = useState(false)
   const [offset, setOffset] = useState({ x: 0, y: 0 })
-const [position, setPosition] = useState({ x: 100, y: 100 })
-
-useEffect(() => {
-  setPosition({
-    x: window.innerWidth * 0.75,
-    y: window.innerHeight * 0.45,
-  })
-}, [])
-
-
-  // -------------------- SPOTIFY ----------------------
-  const getAccessToken = async () => {
-    try {
-      const response = await fetch('https://accounts.spotify.com/api/token', {
-        method: 'POST',
-        headers: {
-          Authorization: 'Basic ' + btoa(`${CLIENT_ID}:${CLIENT_SECRET}`),
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'grant_type=client_credentials',
-      })
-
-      if (!response.ok) {
-        throw new Error('Error al obtener el token: ' + response.status)
-      }
-
-      const data = await response.json()
-      return data.access_token
-    } catch (err) {
-      console.error(err)
-      setError(err.message)
-    }
-  }
-
-  const getPlaylistTracks = async (token) => {
-    try {
-      const response = await fetch(`https://api.spotify.com/v1/playlists/${PLAYLIST_ID}/tracks`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-
-      if (!response.ok) {
-        throw new Error('Error al obtener la playlist: ' + response.status)
-      }
-
-      const data = await response.json()
-      return data.items
-    } catch (err) {
-      console.error(err)
-      setError(err.message)
-    }
-  }
+  const [position, setPosition] = useState({ x: 100, y: 100 })
 
   useEffect(() => {
-    const load = async () => {
-      const token = await getAccessToken()
-      if (!token) return
-      const tracks = await getPlaylistTracks(token)
-if (tracks) {
-  setTracks(tracks) 
-}
-
-    }
-
-    load()
+    setPosition({
+      x: window.innerWidth * 0.75,
+      y: window.innerHeight * 0.45,
+    })
   }, [])
-
-  useEffect(() => {
-    if (tracks.length === 0) return
-    const interval = setInterval(() => {
-      setCurrentTrackIndex((prev) => (prev + 1) % tracks.length)
-    }, 30000)
-
-    return () => clearInterval(interval)
-  }, [tracks])
 
   // -------------------- DRAG ----------------------
 
   const handleMouseDown = (e) => {
-    setDragging(true)
-    const rect = playerRef.current.getBoundingClientRect()
-    setOffset({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    })
-
+    // Solo permitimos arrastrar desde el dragHandle
+    if (e.target.closest(`.${styles.dragHandle}`)) {
+      setDragging(true)
+      const rect = playerRef.current.getBoundingClientRect()
+      setOffset({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      })
+    }
   }
 
   const handleMouseUp = () => {
     if (!dragging) return
     setDragging(false)
-    snapToClosestCorner()
   }
-
-//   const snapToClosestCorner = () => {
-//     const ref = playerRef.current
-//     if (!ref) return
-
-//     // ❌ ELIMINADO: useRef dentro de función
-//     // const animationRef = useRef(null)
-
-//     const windowWidth = window.innerWidth
-//     const windowHeight = window.innerHeight
-//     const boxWidth = ref.offsetWidth || 200
-//     const boxHeight = ref.offsetHeight || 200
-
-//     const corners = [
-//       { x: 20, y: 20 }, // top-left
-//       { x: windowWidth - boxWidth - 20, y: 20 }, // top-right
-//       { x: 20, y: windowHeight - boxHeight - 20 }, // bottom-left
-//       { x: windowWidth - boxWidth - 20, y: windowHeight - boxHeight - 20 }, // bottom-right
-//     ]
-
-//     const closestCorner = corners.reduce((closest, current) => {
-//       const distCurrent = Math.hypot(current.x - position.x, current.y - position.y)
-//       const distClosest = Math.hypot(closest.x - position.x, closest.y - position.y)
-//       return distCurrent < distClosest ? current : closest
-//     })
-
-//     setPosition(closestCorner)
-//   }
 
   const handleMouseMove = (e) => {
     if (!dragging) return
 
-    const newX = e.clientX - offset.x
-    const newY = e.clientY - offset.y
+    let newX = e.clientX - offset.x
+    let newY = e.clientY - offset.y
+
+    // Limites de la pantalla
+    const padding = 20
+    const windowWidth = window.innerWidth
+    const windowHeight = window.innerHeight
+    const boxWidth = playerRef.current?.offsetWidth || 380
+    const boxHeight = playerRef.current?.offsetHeight || 135
+
+    newX = Math.max(padding, Math.min(newX, windowWidth - boxWidth - padding))
+    newY = Math.max(padding, Math.min(newY, windowHeight - boxHeight - padding))
 
     if (animationRef.current) cancelAnimationFrame(animationRef.current)
 
@@ -149,12 +58,6 @@ if (tracks) {
       setPosition({ x: newX, y: newY })
     })
   }
-
-  useEffect(() => {
-    return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current)
-    }
-  }, [])
 
   useEffect(() => {
     if (dragging) {
@@ -171,48 +74,42 @@ if (tracks) {
     }
   }, [dragging, offset])
 
-  if (error) return <div style={{ color: 'red' }}>❌ Error: {error}</div>
-  if (tracks.length === 0) return <div className={styles.musicPlayer}>Cargando música...</div>
-
-  const track = tracks[currentTrackIndex].track
+  useEffect(() => {
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current)
+    }
+  }, [])
 
   return (
     <div
       ref={playerRef}
-      className={`${styles.musicPlayer} select-none`} // ✅ CAMBIO: evita selección de texto
+      className={`${styles.musicPlayer} select-none`}
       onMouseDown={handleMouseDown}
       style={{
         position: 'absolute',
         left: position.x,
         top: position.y,
-        cursor: 'grab',
+        transition: dragging ? 'none' : 'box-shadow 0.3s ease, transform 0.1s ease-out, left 0.3s ease-out, top 0.3s ease-out',
       }}
     >
-      <img
-        src={track.album.images[1]?.url}
-        alt={`Portada de ${track.name}`}
-        style={{
-          maxWidth: '100px',
-          borderRadius: '12px',
-          marginBottom: '1rem',
-        }}
-      />
-      <div className={styles.trackInfo}>
-        <h3>{track.name}</h3>
-        <p>{track.artists.map((artist) => artist.name).join(', ')}</p>
-        {track.preview_url ? (
-          <audio key={track.id} src={track.preview_url} autoPlay controls />
-        ) : (
-          <p style={{ fontSize: '0.7rem', fontStyle: 'italic' }}>Sin preview</p>
-        )}
-        <a
-          href={`https://open.spotify.com/track/${track.id}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ fontSize: '0.8rem', color: '#1DB954' }}
-        >
-          Escuchar en Spotify →
-        </a>
+      {/* Barra de arrastre minimalista */}
+      <div className={styles.dragHandle}>
+        <div className={styles.dragBar}></div>
+      </div>
+
+      {/* Spotify Embed Compacto - Light Theme */}
+      <div className={styles.embedContainer}>
+        <iframe
+          src={`https://open.spotify.com/embed/playlist/${PLAYLIST_ID}?utm_source=generator`}
+          width="100%"
+          height="80"
+          frameBorder="0"
+          allowFullScreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          title="Spotify Player"
+          style={{ borderRadius: '12px' }}
+        ></iframe>
       </div>
     </div>
   )

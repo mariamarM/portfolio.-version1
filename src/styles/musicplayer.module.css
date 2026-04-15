@@ -1,54 +1,56 @@
 .musicPlayer {
-   display: flex;
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 300px;
-  height: 120px;
-  padding:  20px 15px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(15px);
-  border-radius: 20px;
-  border: 1px solid #DB778F;
-  gap: 20px;
-  color: #DB778F;
-  font-family: 'Manrope', sans-serif;
-  text-align: center;
+  justify-content: flex-start;
+  width: 380px;
+  height: 135px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1.5px solid rgba(219, 119, 143, 0.4);
+  overflow: hidden;
   z-index: 1000;
   user-select: none;
-    -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  transition: all 0.3s ease-out;
-
-
-    /* transform: translate(420%, 220%); */
-
+  -webkit-user-select: none;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 12px 40px 0 rgba(219, 119, 143, 0.15);
 }
 
-
-.musicPlayer h3 {
-  font-size: 1.1rem;
- 
-}
-
-.musicPlayer p {
-  font-size: 0.9rem;
-    margin: 0;
-
-  color: #979797;
-}
-
-.musicPlayer a {
-  margin-top: 0.8rem;
-  display: inline-block;
-  font-size: 0.75rem;
-  color: #1db954;
-  text-decoration: none;
-}
-
-.musicPlayer audio {
-  margin-top: 1rem;
+.dragHandle {
   width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  background: rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(219, 119, 143, 0.1);
+}
+
+.dragHandle:active {
+  cursor: grabbing;
+}
+
+.dragBar {
+  width: 45px;
+  height: 5px;
+  background: rgba(219, 119, 143, 0.5);
+  border-radius: 10px;
+}
+
+.embedContainer {
+  width: 100%;
+  height: 100%;
+  padding: 5px; /* Respiro interno */
+  box-sizing: border-box;
+}
+
+.musicPlayer iframe {
+  border: none;
+  width: 100%;
+  height: 80px;
+  border-radius: 16px;
 }
